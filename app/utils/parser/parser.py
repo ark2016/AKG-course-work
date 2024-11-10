@@ -45,4 +45,3 @@ def download_images(url, folder='images'):
                 print(f'Изображение сохранено: {img_name}')
             except Exception as e:
                 print(f'Ошибка при скачивании изображения {img_url}: {e}')
-
