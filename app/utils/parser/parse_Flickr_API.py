@@ -1,6 +1,6 @@
 import os
 import requests
-# from FLICKR_API_KEY import FLICKR_API_KEY
+from app.utils.parser.FLICKR_API_KEY import FLICKR_API_KEY
 
 # URL для запроса к API Flickr
 FLICKR_API_URL = "https://www.flickr.com/services/rest/"
@@ -24,7 +24,7 @@ def download_image(url, folder='flickr_images', image_name=None):
         print(f"Ошибка при скачивании {url}: {e}")
 
 # Функция для парсинга изображений с Flickr API
-def download_flickr_images(api_key, search_text="red fox", folder="test", count=500):
+def download_flickr_images(api_key=FLICKR_API_KEY, search_text="red fox", folder="test", count=500):
     params = {
         "method": "flickr.photos.search",
         "api_key": api_key,
