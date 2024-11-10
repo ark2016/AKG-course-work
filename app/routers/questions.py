@@ -29,7 +29,7 @@ def api_download_images(request: DownloadImagesRequest):
 
 
 # Маршрут для скрапинга изображений с 500px
-@router.post("/scrape_500px_images")
+@router.post("/download_images_with_scrolling")
 def api_scrape_500px_images(request: Scrape500pxImagesRequest):
     try:
         print(f"Received request: URL={request.url},  Folder={request.folder}")
@@ -41,7 +41,7 @@ def api_scrape_500px_images(request: Scrape500pxImagesRequest):
 
 
 # Маршрут для скачивания изображений с Flickr
-@router.post("/download_flickr_images")
+@router.post("/download_images_flickr")
 def api_download_flickr_images(request: DownloadFlickrImagesRequest):
     try:
         print(f"Received request: Search Text={request.search_text}, Folder={request.folder}, Count={request.count}")
