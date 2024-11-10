@@ -3,9 +3,6 @@ import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
-# URL для поиска изображений красной лисы на Wikimedia Commons
-url = "https://500px.com/search?q=red%20fox&type=photos&sort=relevance"
-
 # Заголовки, чтобы эмулировать запросы от браузера
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
@@ -49,6 +46,3 @@ def download_images(url, folder='images'):
             except Exception as e:
                 print(f'Ошибка при скачивании изображения {img_url}: {e}')
 
-
-# Запускаем парсинг
-download_images(url, folder='500px')

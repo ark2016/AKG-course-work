@@ -41,9 +41,9 @@ def setup_driver():
 
 
 # Функция для парсинга изображений с сайта 500px
-def scrape_500px_images(search_url, scroll_pause_time=2, num_scrolls=15):
+def scrape_500px_images(url, scroll_pause_time=2, num_scrolls=15, folder='test'):
     driver = setup_driver()
-    driver.get(search_url)
+    driver.get(url)
 
     # Прокручиваем страницу вниз несколько раз, чтобы загрузить больше изображений
     for _ in range(num_scrolls):
@@ -64,11 +64,8 @@ def scrape_500px_images(search_url, scroll_pause_time=2, num_scrolls=15):
 
     # Скачиваем каждое изображение
     for idx, url in enumerate(image_urls):
-        download_image(url, image_name=f"red_fox_{idx}")
+        download_image(url,folder=folder, image_name=f"red_fox_{idx}")
 
 
-# URL для поиска изображений лисы
-search_url = "https://500px.com/search?q=red%20fox&type=photos&sort=relevance"
 
-# Запуск парсинга изображений
-scrape_500px_images(search_url)
+
