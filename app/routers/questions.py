@@ -1,9 +1,9 @@
 from fastapi import APIRouter, HTTPException
-from ..utils.parser.parser import download_images  # Импортируем функцию
-from ..utils.parser.parser500px import scrape_500px_images  # Импортируем функцию
-from ..utils.parser.parse_Flickr_API import download_flickr_images  # Импортируем функцию
+from ..utils.parser.parser import download_images
+from ..utils.parser.parser500px import scrape_500px_images
+from ..utils.parser.parse_Flickr_API import download_flickr_images
 from ..schemas.questions import DownloadImagesRequest, Scrape500pxImagesRequest, \
-    DownloadFlickrImagesRequest  # Импортируем схемы
+    DownloadFlickrImagesRequest
 
 router = APIRouter(
     tags=["Questions"]
