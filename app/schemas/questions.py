@@ -19,3 +19,8 @@ class DownloadFlickrImagesRequest(BaseModel):
     search_text: str = "red fox"
     folder: Optional[str] = "test"
     count: Optional[int] = 100
+
+# Модель запроса для создания датасета
+class CreateDatasetRequest(BaseModel):
+    source_dir: str  
+    output_dir: str

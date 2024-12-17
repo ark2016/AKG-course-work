@@ -3,7 +3,8 @@ from ..utils.parser.parser import download_images
 from ..utils.parser.parser500px import scrape_500px_images
 from ..utils.parser.parse_Flickr_API import download_flickr_images
 from ..schemas.questions import DownloadImagesRequest, Scrape500pxImagesRequest, \
-    DownloadFlickrImagesRequest
+    DownloadFlickrImagesRequest, CreateDatasetRequest
+from ..utils.dataset_utils import images_to_parquet
 
 router = APIRouter(
     tags=["Questions"]
@@ -49,4 +50,20 @@ def api_download_flickr_images(request: DownloadFlickrImagesRequest):
         return {"message": f"Images downloaded successfully to {request.folder}"}
     except Exception as e:
         print(f'Ошибка при обработке запроса: {e}')
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# Маршрут для создания датасета
+@router.post("/create_dataset")
+def create_dataset(request: CreateDatasetRequest):
+    """
+    Создание датасета из изображений и сохранение в формате .parquet.
+    """
+    try:
+        output_file = images_to_parquet(
+            source_dir=request.source_dir,
+            output_dir=request.output_dir
+        )
+        return {"message": "Dataset created successfully", "file_path": output_file}
+    except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
