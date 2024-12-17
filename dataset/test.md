@@ -1,13 +1,16 @@
 при попытке сжатия в `.parquet` 
+
 ```
 500
 Error: Internal Server Error
 ```
+
 ```json
 {
   "detail": "realloc of size 2282225664 failed"
 }
 ```
+
 ```
  content-length: 46 
  content-type: application/json 
