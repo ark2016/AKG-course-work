@@ -5,6 +5,7 @@ from ..utils.parser.parse_Flickr_API import download_flickr_images
 from ..schemas.questions import DownloadImagesRequest, Scrape500pxImagesRequest, \
     DownloadFlickrImagesRequest, CreateDatasetRequest
 from ..utils.dataset_utils import images_to_parquet
+from ..utils.model_prediction_utils import ModelLoader
 
 router = APIRouter(
     tags=["Questions"]
@@ -65,5 +66,21 @@ def create_dataset(request: CreateDatasetRequest):
             output_dir=request.output_dir
         )
         return {"message": "Dataset created successfully", "file_path": output_file}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# Инициализация загрузчика модели
+model_loader = ModelLoader(model_path="models/resnet18_weights.pth")
+
+
+@router.post("/predict")
+def predict(image_path: str):
+    """
+    Предсказание класса объекта на изображении.
+    """
+    try:
+        result = model_loader.predict(image_path=image_path)
+        return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

@@ -20,7 +20,12 @@ class DownloadFlickrImagesRequest(BaseModel):
     folder: Optional[str] = "test"
     count: Optional[int] = 100
 
+
 # Модель запроса для создания датасета
 class CreateDatasetRequest(BaseModel):
-    source_dir: str  
+    source_dir: str
     output_dir: str
+
+
+class PredictionRequest(BaseModel):
+    image_path: str
