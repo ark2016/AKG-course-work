@@ -1,0 +1,11 @@
+﻿Field,Description
+capture_id,Unique sighting record of individual
+season_id,"1=spring, 2=summer, 3=autumn, 4=winter"
+survey_id,"1=summer_2013, 5=autumn_2013, 10=winter_2013, 17=sprint=2014"
+transformed_datetime,"Datetime -12h to account for nocturnal activity, so all captures in a night have the same date."
+fox_id,Fox individual identifier
+fox_name,Human readable name
+age_class,"Cub, Subadult, Adult"
+sex,"M=male, F=female, U=unknown"
+social_status,"Dom=dominant, Sub=subordinate, U=unknown"
+image,Image name
